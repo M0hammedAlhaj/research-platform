@@ -13,7 +13,8 @@ public record UserAuthentication(User user) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_UNKNOWN"));
+
+        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getType().toString()));
     }
 
     @Override

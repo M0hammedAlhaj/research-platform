@@ -19,7 +19,6 @@ public abstract class User extends BaseEntity {
     private String password;
 
     protected User() {
-
     }
 
     public abstract UserType getType();

@@ -1,9 +1,11 @@
 package com.mo.researchplatform.project.ui.rest.create;
 
 import com.mo.researchplatform.project.domain.entity.Project;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 public class ProjectCreateResponse {
 
     private final String id;
