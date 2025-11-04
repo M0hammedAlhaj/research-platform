@@ -1,6 +1,5 @@
 package com.mo.researchplatform.user.domain.entity;
 
-import com.mo.researchplatform.contributor.entity.Contributor;
 import com.mo.researchplatform.shared.domain.BaseEntity;
 import com.mo.researchplatform.user.domain.model.UserType;
 import jakarta.persistence.*;
@@ -13,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class User extends BaseEntity {
+public abstract class User extends BaseEntity {
 
     private String email;
 
@@ -23,10 +22,5 @@ public class User extends BaseEntity {
 
     }
 
-    public UserType getType() {
-        if (this instanceof Contributor) {
-            return UserType.CONTRIBUTOR;
-        }
-        return UserType.REFRESHER;
-    }
+    public abstract UserType getType();
 }

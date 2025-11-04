@@ -19,7 +19,7 @@ public class UserFactoryProvider {
     static {
         userFactoryMap = new EnumMap<>(UserType.class);
         userFactoryMap.put(UserType.CONTRIBUTOR, new ContributorFactory());
-        userFactoryMap.put(UserType.REFRESHER, new ResearchersFactory());
+        userFactoryMap.put(UserType.RESEARCHER, new ResearchersFactory());
     }
 
     protected UserFactory getUserFactory(UserType userType) {
