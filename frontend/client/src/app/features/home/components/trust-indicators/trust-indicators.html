@@ -1,0 +1,8 @@
+<div class="trust-indicators">
+  @for (indicator of indicators; track indicator.label) {
+    <div class="indicator">
+      <h3 class="indicator-value">{{ indicator.value }}</h3>
+      <p class="indicator-label">{{ indicator.label }}</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,10 @@
+<button
+  class="btn"
+  [class.btn-primary]="type === 'primary'"
+  [class.btn-secondary]="type === 'secondary'"
+  [disabled]="disabled"
+  [ngStyle]="buttonStyles"
+  [routerLink]="route"
+  (click)="handleClick()">
+  {{ text }}
+</button>

@@ -1,0 +1,33 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Footer Content -->
+    <div class="footer-content">
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <h3 class="brand-title">Collaborative Research & Knowledge Sharing Platform</h3>
+        <p class="brand-description">Empowering researchers worldwide to collaborate, innovate, and excel.</p>
+      </div>
+
+      <!-- Links Section -->
+      <div class="footer-links">
+        @for (link of footerLinks; track link.path) {
+          <a [routerLink]="link.path" class="footer-link">{{ link.label }}</a>
+        }
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-social">
+        @for (social of socialLinks; track social.name) {
+          <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="social-link" [title]="social.name">
+            <span [innerHTML]="getSanitizedIcon(social.icon)"></span>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p class="copyright">© {{ currentYear }} Collaborative Research Platform. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

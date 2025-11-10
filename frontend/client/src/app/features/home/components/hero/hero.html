@@ -1,0 +1,242 @@
+<section class="hero">
+  <!-- Animated Background Elements -->
+  <div class="hero-bg-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="floating-shape shape-4"></div>
+  </div>
+
+  <!-- Grid Pattern Overlay -->
+  <div class="grid-pattern"></div>
+
+  <!-- Animated Particles -->
+  <div class="particles">
+    <div class="particle" *ngFor="let p of [1,2,3,4,5,6,7,8,9,10]"></div>
+  </div>
+
+  <!-- Hero Container with Two Columns -->
+  <div class="hero-container">
+    <!-- Left Column - Content -->
+    <div class="hero-content">
+    <!-- Badge -->
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M8 0L10 6L16 6L11 10L13 16L8 12L3 16L5 10L0 6L6 6L8 0Z" fill="url(#badgeGradient)"/>
+        <defs>
+          <linearGradient id="badgeGradient" x1="0" y1="0" x2="16" y2="16">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#f472b6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>Trusted by 10,000+ researchers worldwide</span>
+    </div>
+
+    <!-- Animated Icon/Logo Area -->
+    <div class="hero-icon">
+      <div class="icon-circle">
+        <svg viewBox="0 0 120 120" class="animated-icon">
+          <!-- Outer glow circle -->
+          <circle cx="60" cy="60" r="55" stroke="url(#glowGradient)" stroke-width="1" fill="none" opacity="0.3" />
+          <circle cx="60" cy="60" r="50" stroke="url(#gradient)" stroke-width="3" fill="none" class="main-circle" />
+
+          <!-- Inner elements - research symbols -->
+          <g class="inner-icon">
+            <!-- Book/Knowledge symbol -->
+            <rect x="45" y="48" width="30" height="24" rx="2" stroke="white" stroke-width="2" fill="none" class="book"/>
+            <line x1="60" y1="48" x2="60" y2="72" stroke="white" stroke-width="2" class="book-spine"/>
+            <line x1="48" y1="56" x2="57" y2="56" stroke="white" stroke-width="1.5" opacity="0.7"/>
+            <line x1="48" y1="62" x2="57" y2="62" stroke="white" stroke-width="1.5" opacity="0.7"/>
+
+            <!-- Collaboration nodes -->
+            <circle cx="35" cy="40" r="4" fill="url(#gradient)" class="node node-1"/>
+            <circle cx="85" cy="40" r="4" fill="url(#gradient)" class="node node-2"/>
+            <circle cx="35" cy="80" r="4" fill="url(#gradient)" class="node node-3"/>
+            <circle cx="85" cy="80" r="4" fill="url(#gradient)" class="node node-4"/>
+
+            <!-- Connection lines -->
+            <line x1="39" y1="43" x2="50" y2="52" stroke="url(#gradient)" stroke-width="1.5" opacity="0.5" class="connection"/>
+            <line x1="81" y1="43" x2="70" y2="52" stroke="url(#gradient)" stroke-width="1.5" opacity="0.5" class="connection"/>
+          </g>
+
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#f472b6;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.3" />
+              <stop offset="100%" style="stop-color:#f472b6;stop-opacity:0.3" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="title-line-wrapper">
+        <span class="title-line">Accelerate Research.</span>
+      </span>
+      <span class="title-line-wrapper">
+        <span class="title-line gradient-text">Collaborate Without Limits.</span>
+      </span>
+    </h1>
+
+    <p class="hero-subtitle">
+      A unified platform for managing research projects, sharing knowledge, and tracking progress with your team. Transform the way you research.
+    </p>
+
+    <!-- Feature highlights -->
+    <div class="hero-features">
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 0L12.5 7.5L20 7.5L14 12L16.5 20L10 15L3.5 20L6 12L0 7.5L7.5 7.5L10 0Z" fill="#7c3aed"/>
+        </svg>
+        <span>AI-Powered Organization</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 0L12.5 7.5L20 7.5L14 12L16.5 20L10 15L3.5 20L6 12L0 7.5L7.5 7.5L10 0Z" fill="#a855f7"/>
+        </svg>
+        <span>Real-time Collaboration</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 0L12.5 7.5L20 7.5L14 12L16.5 20L10 15L3.5 20L6 12L0 7.5L7.5 7.5L10 0Z" fill="#f472b6"/>
+        </svg>
+        <span>Version Control Built-in</span>
+      </div>
+    </div>
+
+    <div class="hero-buttons">
+      <app-button
+        text="Start a Research Project"
+        type="primary"
+        >
+      </app-button>
+      <app-button
+        text="Browse Knowledge Library"
+        type="secondary"
+        >
+      </app-button>
+    </div>
+
+    <p class="hero-signup-text">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display: inline; margin-right: 6px;">
+        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M4 7L6 9L10 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      No credit card required • Start free today
+    </p>
+  </div>
+
+  <!-- Right Column - Illustration -->
+  <div class="hero-illustration">
+    <div class="illustration-container">
+      <!-- Main Research Illustration SVG -->
+      <svg viewBox="0 0 600 600" class="main-illustration" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background Elements -->
+        <defs>
+          <linearGradient id="illustrationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#f472b6;stop-opacity:0.8" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Floating Documents/Papers -->
+        <g class="floating-papers">
+          <rect x="80" y="120" width="120" height="150" rx="8" fill="rgba(255,255,255,0.1)" stroke="url(#illustrationGradient)" stroke-width="2" class="paper paper-1"/>
+          <line x1="100" y1="150" x2="180" y2="150" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <line x1="100" y1="170" x2="180" y2="170" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <line x1="100" y1="190" x2="160" y2="190" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+        </g>
+
+        <!-- Central Knowledge Network -->
+        <g class="knowledge-network">
+          <!-- Central Node -->
+          <circle cx="300" cy="300" r="60" fill="url(#illustrationGradient)" filter="url(#glow)" class="central-node"/>
+          <circle cx="300" cy="300" r="45" fill="rgba(15,15,35,0.8)" stroke="white" stroke-width="2"/>
+
+          <!-- Book icon in center -->
+          <rect x="280" y="285" width="40" height="30" rx="2" stroke="white" stroke-width="2.5" fill="none"/>
+          <line x1="300" y1="285" x2="300" y2="315" stroke="white" stroke-width="2.5"/>
+
+          <!-- Surrounding Nodes -->
+          <circle cx="180" cy="200" r="35" fill="rgba(124,58,237,0.3)" stroke="#7c3aed" stroke-width="2" class="outer-node node-1"/>
+          <circle cx="420" cy="200" r="35" fill="rgba(244,114,182,0.3)" stroke="#f472b6" stroke-width="2" class="outer-node node-2"/>
+          <circle cx="180" cy="400" r="35" fill="rgba(168,85,247,0.3)" stroke="#a855f7" stroke-width="2" class="outer-node node-3"/>
+          <circle cx="420" cy="400" r="35" fill="rgba(124,58,237,0.3)" stroke="#7c3aed" stroke-width="2" class="outer-node node-4"/>
+
+          <!-- Connection Lines -->
+          <line x1="240" y1="300" x2="210" y2="230" stroke="url(#illustrationGradient)" stroke-width="2" stroke-dasharray="5,5" class="connection-line line-1"/>
+          <line x1="360" y1="300" x2="390" y2="230" stroke="url(#illustrationGradient)" stroke-width="2" stroke-dasharray="5,5" class="connection-line line-2"/>
+          <line x1="240" y1="300" x2="210" y2="370" stroke="url(#illustrationGradient)" stroke-width="2" stroke-dasharray="5,5" class="connection-line line-3"/>
+          <line x1="360" y1="300" x2="390" y2="370" stroke="url(#illustrationGradient)" stroke-width="2" stroke-dasharray="5,5" class="connection-line line-4"/>
+
+          <!-- User icons in outer nodes -->
+          <circle cx="180" cy="200" r="12" fill="white" opacity="0.9"/>
+          <circle cx="420" cy="200" r="12" fill="white" opacity="0.9"/>
+          <circle cx="180" cy="400" r="12" fill="white" opacity="0.9"/>
+          <circle cx="420" cy="400" r="12" fill="white" opacity="0.9"/>
+        </g>
+
+        <!-- Floating Data Elements -->
+        <g class="data-elements">
+          <rect x="400" y="120" width="100" height="80" rx="6" fill="rgba(255,255,255,0.08)" stroke="#a855f7" stroke-width="2" class="data-card card-1"/>
+          <circle cx="430" cy="145" r="8" fill="#7c3aed"/>
+          <line x1="445" y1="145" x2="480" y2="145" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <line x1="445" y1="160" x2="480" y2="160" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <line x1="445" y1="175" x2="465" y2="175" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+        </g>
+
+        <!-- Analytics Chart -->
+        <g class="analytics-chart">
+          <rect x="100" y="420" width="140" height="100" rx="8" fill="rgba(255,255,255,0.08)" stroke="#f472b6" stroke-width="2" class="chart-container"/>
+          <polyline points="120,490 140,470 160,480 180,450 200,460 220,440" stroke="#f472b6" stroke-width="3" fill="none" class="chart-line"/>
+          <circle cx="120" cy="490" r="4" fill="#f472b6"/>
+          <circle cx="140" cy="470" r="4" fill="#f472b6"/>
+          <circle cx="160" cy="480" r="4" fill="#f472b6"/>
+          <circle cx="180" cy="450" r="4" fill="#f472b6"/>
+          <circle cx="200" cy="460" r="4" fill="#f472b6"/>
+          <circle cx="220" cy="440" r="4" fill="#f472b6"/>
+        </g>
+
+        <!-- Collaboration Indicator -->
+        <g class="collaboration-badge">
+          <circle cx="480" cy="480" r="45" fill="rgba(124,58,237,0.2)" stroke="url(#illustrationGradient)" stroke-width="2" class="badge-bg"/>
+          <path d="M465 475 L475 485 L495 465" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" class="check-icon"/>
+        </g>
+      </svg>
+
+      <!-- Floating Elements Overlay -->
+      <div class="floating-elements">
+        <div class="float-element element-1">📊</div>
+        <div class="float-element element-2">🔬</div>
+        <div class="float-element element-3">💡</div>
+        <div class="float-element element-4">📚</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <div class="arrow">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</section>

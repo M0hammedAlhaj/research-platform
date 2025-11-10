@@ -1,0 +1,20 @@
+<section class="features-section">
+  <div class="features-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">Powerful Features for Modern Research</h2>
+      <p class="section-subtitle">Everything you need to collaborate, organize, and excel in your research journey</p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <app-feature-card
+          [icon]="feature.icon"
+          [title]="feature.title"
+          [description]="feature.description">
+        </app-feature-card>
+      }
+    </div>
+  </div>
+</section>
