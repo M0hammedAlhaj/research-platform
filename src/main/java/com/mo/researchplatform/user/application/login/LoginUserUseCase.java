@@ -15,12 +15,10 @@ public class LoginUserUseCase {
     private final EncryptionService passwordEncoder;
 
     public User login(LoginUserCommand loginUserCommand) {
-
-        final var optionalUser = userRepository.findByEmail(loginUserCommand.email());
-
-        if (optionalUser.isPresent() &&
-            passwordEncoder.matchPassword(loginUserCommand.password(), optionalUser.get().getPassword())) {
-            return optionalUser.get();
+        final var userSaved = userRepository.findByEmail(loginUserCommand.email());
+        if (userSaved.isPresent() &&
+            passwordEncoder.matchPassword(loginUserCommand.password(), userSaved.get().getPassword())) {
+            return userSaved.get();
         }
 
         throw new InvalidCredentialsException("Email or password is invalid");
