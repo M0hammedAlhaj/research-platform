@@ -1,0 +1,688 @@
+// CSS Constants
+$bg-primary: #0f0f23;
+$bg-secondary: #1a1a2e;
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.7);
+$accent-purple: #7c3aed;
+$accent-pink: #f472b6;
+
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $bg-primary 0%, $bg-secondary 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // Background decoration
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s infinite ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s infinite ease-in-out reverse;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+  }
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: $text-primary;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+
+    svg {
+      transform: translateX(-3px);
+    }
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+
+  &.active,
+  &.completed {
+    opacity: 1;
+  }
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: $text-primary;
+  transition: all 0.3s ease;
+
+  .step.active & {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    border-color: #7c3aed;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+  }
+
+  .step.completed & {
+    background: rgba(124, 58, 237, 0.3);
+    border-color: #7c3aed;
+  }
+}
+
+.step-label {
+  font-size: 0.8125rem;
+  color: $text-secondary;
+  font-weight: 500;
+
+  .step.active & {
+    color: $text-primary;
+  }
+}
+
+.step-divider {
+  width: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-subtitle {
+  font-size: 1.125rem;
+  color: $text-secondary;
+  margin: 0;
+}
+
+.user-types-container {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.section-badge {
+  display: inline-block;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #a855f7;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 auto 2rem;
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits-note {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 12px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  svg {
+    flex-shrink: 0;
+    color: #a855f7;
+    margin-top: 0.125rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+}
+
+.user-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 800px;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.selected-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: $text-primary;
+  padding: 0.625rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  svg {
+    color: #a855f7;
+  }
+}
+
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
+
+  svg {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.decorative-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+  top: 10%;
+  right: 5%;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape-2 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.25) 0%, transparent 70%);
+  bottom: 15%;
+  left: 10%;
+  animation: float 15s infinite ease-in-out reverse;
+}
+
+.shape-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 10s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.auth-toggle {
+  text-align: center;
+  color: $text-secondary;
+  font-size: 0.9375rem;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: $accent-purple;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($accent-purple, 10%);
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 1.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.875rem;
+  }
+
+  .auth-subtitle {
+    font-size: 1rem;
+  }
+
+  .user-types {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .auth-header {
+    margin-bottom: 2rem;
+  }
+
+  .step-indicator {
+    margin-bottom: 1.5rem;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+  }
+
+  .step-divider {
+    width: 40px;
+  }
+
+  .benefits-note {
+    padding: 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .section-badge {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 1rem;
+  }
+
+  .auth-title {
+    font-size: 1.75rem;
+  }
+
+  .auth-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .back-button {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}
+
+// Error Message Styles
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: #ef4444;
+  font-size: 0.875rem;
+
+  svg {
+    flex-shrink: 0;
+    color: #ef4444;
+  }
+}
+
+// Loading Overlay Styles
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 35, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(124, 58, 237, 0.3);
+    border-top: 3px solid #7c3aed;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Success Notification Styles
+.success-notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 35, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.success-notification {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+
+  .success-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    .success-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(45deg, #10b981, #059669);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.5s ease-out 0.2s both;
+
+      svg {
+        color: white;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .close-button {
+      background: transparent;
+      border: none;
+      color: $text-secondary;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: $text-primary;
+      }
+    }
+  }
+
+  .success-content {
+    h3 {
+      color: $text-primary;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem 0;
+      background: linear-gradient(45deg, #10b981, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      color: $text-secondary;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 1.5rem 0;
+    }
+  }
+
+  .success-actions {
+    margin-bottom: 1rem;
+
+    .continue-button {
+      background: linear-gradient(45deg, $accent-purple, #8b5cf6);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      justify-content: center;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: linear-gradient(45deg, #6d28d9, $accent-purple);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      }
+
+      svg {
+        transition: transform 0.2s ease;
+      }
+
+      &:hover svg {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  .auto-redirect-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8125rem;
+    justify-content: center;
+
+    svg {
+      animation: pulse 2s infinite;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Responsive adjustments for success notification
+@media (max-width: 480px) {
+  .success-notification {
+    padding: 1.5rem;
+    margin: 1rem;
+
+    .success-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .success-content p {
+      font-size: 0.875rem;
+    }
+  }
+}

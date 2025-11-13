@@ -1,7 +1,4 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 1.2rem 2rem;
   margin: 0;
   background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
@@ -9,71 +6,189 @@
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 100;
+}
 
-  .navbar-brand {
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-brand {
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+
+  li {
+    position: relative;
+
     a {
-      color: white;
+      color: #e2e8f0;
       text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: 500;
+      font-size: 1rem;
       transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
 
       &:hover {
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        color: #ffffff;
         transform: translateY(-1px);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #7c3aed 0%, #f472b6 100%);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after,
+      &.active::after {
+        width: 100%;
+      }
+
+      &.active {
+        color: #ffffff;
+        font-weight: 600;
       }
     }
   }
+}
 
-  a {
-    color: #e2e8f0;
-    text-decoration: none;
-    font-weight: 500;
+.navbar-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
     transition: all 0.3s ease;
-    position: relative;
-
-    &:hover {
-      color: #ffffff;
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(135deg, #7c3aed 0%, #f472b6 100%);
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
   }
 
-  ul {
-    display: flex;
-    align-items: center;
+  &:hover span {
+    background: linear-gradient(135deg, #7c3aed 0%, #f472b6 100%);
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .navbar-container {
+    gap: 1.5rem;
   }
 
   .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+    gap: 1.5rem;
+  }
+}
 
-    li {
-      position: relative;
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-buttons {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  // Mobile menu (for future implementation)
+  .navbar.mobile-open {
+    .navbar-links,
+    .navbar-buttons {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
+
+    .navbar-links {
+      gap: 0.5rem;
+
+      li a {
+        display: block;
+        padding: 0.75rem 1rem;
+      }
+    }
+
+    .navbar-buttons {
+      margin-top: 1rem;
+      gap: 0.75rem;
+
+      app-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.875rem 1rem;
+  }
+
+  .navbar-brand a {
+    font-size: 1.25rem;
   }
 }

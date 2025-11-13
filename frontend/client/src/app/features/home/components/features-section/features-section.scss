@@ -3,6 +3,7 @@
   background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 50%, #0f0f23 100%);
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 80px; // Offset for sticky navbar
 }
 
 .features-section::before {

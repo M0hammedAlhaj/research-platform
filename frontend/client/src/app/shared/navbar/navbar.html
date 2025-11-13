@@ -1,20 +1,44 @@
 <nav class="navbar">
-  <div class="navbar-brand">
-    <a href="#">MyApp</a>
+  <div class="navbar-container">
+    <!-- Brand -->
+    <div class="navbar-brand">
+      <a [routerLink]="brandPath">{{ brand }}</a>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="navbar-links">
+      @for (link of links; track link.label) {
+        <li>
+          @if (link.fragment) {
+            <a href="#{{ link.fragment }}" (click)="onLinkClick(link, $event)">{{ link.label }}</a>
+          } @else if (link.path) {
+            <a [routerLink]="link.path" routerLinkActive="active">{{ link.label }}</a>
+          } @else {
+            <a>{{ link.label }}</a>
+          }
+        </li>
+      }
+    </ul>
+
+    <!-- Action Buttons -->
+    <div class="navbar-buttons">
+      @for (button of buttons; track button.text) {
+        <app-button
+          [text]="button.text"
+          [type]="button.type"
+          [route]="button.path || ''"
+          width="auto"
+          height="40px"
+          fontSize="15px">
+        </app-button>
+      }
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
-  <ul class="navbar-links">
-    <li><a routerLink="home">Home</a></li>
-    <li><a routerLink="about">About</a></li>
-    <li><a routerLink="contact">Contact</a></li>
-    <li>
-      <app-button
-        text="Login"
-        type="primary"
-        width="10px"
-        height="30px"
-        fontSize="30px"
-        route="login">
-      </app-button>
-    </li>
-  </ul>
 </nav>

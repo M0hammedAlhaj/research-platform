@@ -1,0 +1,161 @@
+<div class="auth-page">
+  <!-- Success Notification Overlay -->
+  @if (showSuccessNotification) {
+    <div class="success-notification-overlay">
+      <div class="success-notification">
+        <div class="success-header">
+          <div class="success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <button class="close-button" (click)="closeSuccessNotification()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="success-content">
+          <h3>Account Created Successfully!</h3>
+          <p>{{ successMessage }}</p>
+          
+          <div class="success-actions">
+            <button class="continue-button" (click)="closeSuccessNotification()">
+              Continue to Sign In
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="auto-redirect-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Redirecting to sign in automatically in a few seconds...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="auth-container">
+    <!-- Back Button -->
+    <button class="back-button" (click)="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Back</span>
+    </button>
+
+    <!-- Header -->
+    <div class="auth-header">
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step" [class.active]="step === 'select-type'" [class.completed]="step === 'form'">
+          <div class="step-circle">1</div>
+          <span class="step-label">Choose Type</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step" [class.active]="step === 'form'">
+          <div class="step-circle">2</div>
+          <span class="step-label">{{ authMode === 'login' ? 'Sign In' : 'Sign Up' }}</span>
+        </div>
+      </div>
+
+      <h1 class="auth-title">{{ pageTitle }}</h1>
+      @if (pageSubtitle) {
+        <p class="auth-subtitle">{{ pageSubtitle }}</p>
+      }
+    </div>
+
+    <!-- Step 1: User Type Selection -->
+    @if (step === 'select-type') {
+      <div class="user-types-container">
+        <div class="section-badge">Select Your Role</div>
+        <div class="user-types">
+          @for (userType of userTypes; track userType.type) {
+            <app-user-type-card
+              [userType]="userType"
+              [selected]="selectedUserType === userType.type"
+              (cardClick)="onUserTypeSelected($event)">
+            </app-user-type-card>
+          }
+        </div>
+        <div class="benefits-note">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <p>Choose the role that best describes your research involvement. You can update this later in your profile settings.</p>
+        </div>
+      </div>
+    }
+
+    <!-- Step 2: Auth Form -->
+    @if (step === 'form') {
+      <div class="form-container">
+        <!-- Selected User Type Badge -->
+        <div class="selected-type-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>{{ selectedUserType === 'contributor' ? 'Contributor' : 'Researcher' }}</span>
+        </div>
+
+        <!-- Error Message -->
+        @if (errorMessage) {
+          <div class="error-message">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M15 9L9 15M9 9L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>{{ errorMessage }}</span>
+          </div>
+        }
+
+        <app-auth-form
+          [config]="currentFormConfig"
+          [userType]="selectedUserType || ''"
+          (formSubmit)="onFormSubmit($event)">
+        </app-auth-form>
+
+        <!-- Loading State -->
+        @if (isLoading) {
+          <div class="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p>{{ authMode === 'login' ? 'Signing in...' : 'Creating account...' }}</p>
+          </div>
+        }
+
+        <!-- Toggle between login/register -->
+        <div class="auth-toggle">
+          @if (authMode === 'login') {
+            <p>Don't have an account? <a (click)="switchAuthMode('register')">Create one now</a></p>
+          } @else {
+            <p>Already have an account? <a (click)="switchAuthMode('login')">Sign in instead</a></p>
+          }
+        </div>
+
+        <!-- Security Note -->
+        <div class="security-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Your information is secure and encrypted</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Background Decorative Elements -->
+  <div class="decorative-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+</div>

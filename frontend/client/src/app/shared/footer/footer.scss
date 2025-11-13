@@ -5,6 +5,7 @@
   padding: 60px 20px 30px;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 80px; // Offset for sticky navbar
 
   &::before {
     content: '';

@@ -1,0 +1,14 @@
+<div 
+  class="user-type-card" 
+  [class.selected]="selected"
+  (click)="onCardClick()">
+  <div class="card-icon" [innerHTML]="sanitizedIcon"></div>
+  <h3 class="card-title">{{ userType.title }}</h3>
+  <p class="card-description">{{ userType.description }}</p>
+  <div class="selection-indicator" *ngIf="selected">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="2"/>
+      <path d="M7 12L10 15L17 8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
